@@ -4,12 +4,17 @@ const fetchCryptoPrices = require('./jobs/fetchPrices');
 const schedule = require('node-schedule');
 const statsRouter = require('./routes/stats')
 const deviationRouter = require('./routes/deviation')
+const corsOptions = require('./config/corsConfig')
 require('dotenv').config();
 
 const app = express();
 
 // Connect to MongoDB
 connectDB();
+
+//Cors configurations
+app.use(corsOptions)
+
 
 // Schedule background job to run every 2 hours
 schedule.scheduleJob('0 */2 * * *', fetchCryptoPrices);

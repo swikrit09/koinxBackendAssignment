@@ -2,6 +2,7 @@ const express = require('express');
 const connectDB = require('./config/db');
 const fetchCryptoPrices = require('./jobs/fetchPrices');
 const schedule = require('node-schedule');
+const statsRouter = require('./routes/stats')
 require('dotenv').config();
 
 const app = express();
@@ -19,6 +20,10 @@ app.use(express.json());
 app.get("/", (req, res) => {
     res.send("Server is running");
 })
+
+// API routes
+app.use('/api', statsRouter);
+
 
 
 // Start server

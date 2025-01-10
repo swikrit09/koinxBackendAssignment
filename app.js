@@ -23,8 +23,8 @@ app.get("/", (req, res) => {
 })
 
 // API routes
-app.use('/api', statsRouter);
-app.use('/api', deviationRouter);
+app.use('/api/v1', statsRouter);
+app.use('/api/v1', deviationRouter);
 
 
 // Start server
